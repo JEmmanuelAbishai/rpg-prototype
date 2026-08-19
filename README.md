@@ -1,64 +1,89 @@
 
-# Untitled RPG
+<div align="center">
 
-Was 
----
+# RPG Prototype
 
-## 🎮 Features
+**A 2D action-RPG framework built with Godot 4.x**
 
-- 2D pixel-art graphics
-- Player movement and animations
-- NPC interactions
-- Inventory management
-- Enemy AI and combat
----
+[![Godot](https://img.shields.io/badge/Godot-4.x-blue?logo=godotengine&logoColor=white)](https://godotengine.org)
+[![GDScript](https://img.shields.io/badge/Language-GDScript-yellow?logo=godot)](https://docs.godotengine.org)
+[![License](https://img.shields.io/badge/License-MIT-green)]()
 
-## 🛠️ Built With
-
-- **Game Engine:** Godot 4.x
-- **Language:** GDScript
-- **Graphics:** Pixel Art
-- **Version Control:** Git & GitHub
+</div>
 
 ---
+## V1 Demo (Old)
 
-## 📁 Project Structure
+<div align="center">
 
+![Older demo](v1_demo.gif)
+
+</div>
+
+---
+
+##  Overview
+
+A modular 2D RPG prototype featuring entity-component interactions, state management, and custom shaders. Designed as a lightweight foundation for top-down action-adventure games.
+
+| Feature | Status |
+| :--- | :--- |
+| **Player Movement** |  Implemented |
+| **Enemy AI** |  Basic State Machine |
+| **Inventory** |  WIP |
+| **Combat Effects** |  Shader-based |
+
+---
+
+##  Architecture
+
+The project utilizes a singleton pattern for global state management (`global.gd`) to handle scene transitions and data persistence, while individual entities (`Player`, `Enemy`) encapsulate their own logic and visual effects.
+
+```mermaid
+classDiagram
+  class Global {
+    +load_scene()
+    +game_state_manager()
+  }
+  class Player {
+    +process(delta)
+    +handle_movement()
+  }
+  class Enemy {
+    +process_ai()
+    +take_damage()
+  }
+  class OverWorld {
+    +spawn_entities()
+  }
+  class DeathEffect {
+    +play_animation()
+  }
+
+  Global ..> OverWorld : orchestrates
+  OverWorld *-- Player : contains
+  OverWorld *-- Enemy : contains
+  Player ..> DeathEffect : triggers
+  Enemy ..> DeathEffect : triggers
 ```
 
-untitled-rpg/
-│
-├── assets/             # Sprites, audio, fonts
-├── scenes/             # Game scenes
-├── scripts/            # GDScript files
-├── ui/                 # User interface scenes
-├── levels/             # Maps and level data
-├── project.godot       # Godot project file
-├── README.md
-└── .gitignore
+---
 
-````
+##  Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/JEmmanuelAbishai/rpg-prototype.git
+   ```
+2. **Open in Godot:**
+   Open `project.godot` using the Godot Engine (4.x+ recommended).
+3. **Run:**
+   Press `F5` or the Play icon to launch the `OverWorld` scene.
 
 ---
 
-## 🚀 Getting Started
+##  Authors
 
-### Prerequisites
-
-- Godot Engine 4.x or later
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/untitled-rpg.git
-````
-
-## 👥 Authors
-
-JEmmanuelAbishai
-
-GitHub: (https://github.com/JEmmanuelAbishai)
-
----
+**JEmmanuelAbishai**
+[GitHub Profile](https://github.com/JEmmanuelAbishai)
+```
